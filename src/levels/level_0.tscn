@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://byc2jddxrumb8"]
+
+[ext_resource type="Script" uid="uid://dwptf2f2p2wd8" path="res://src/levels/level.gd" id="1_dw1eb"]
+[ext_resource type="Script" uid="uid://dkkldanaqdbol" path="res://src/gameplay/creep/CreepField.cs" id="1_field"]
+[ext_resource type="PackedScene" uid="uid://cqafoon7yf5vm" path="res://src/gameplay/characters/seed.tscn" id="2_go1b2"]
+[ext_resource type="PackedScene" uid="uid://bmqv6750uiyhj" path="res://src/gameplay/characters/bob.tscn" id="3_40mgu"]
+[ext_resource type="Script" uid="uid://ct87e73yxmo3u" path="res://src/levels/background.gd" id="4_u2ujh"]
+[ext_resource type="Texture2D" uid="uid://dnqdoyjas7e42" path="res://assets/art/world/density_brushes.aseprite" id="5_dither"]
+
+[node name="Level0" type="Node2D" unique_id=797826195]
+script = ExtResource("1_dw1eb")
+
+[node name="CreepField" type="Node2D" parent="." unique_id=180528506]
+position = Vector2(2879, 1617)
+script = ExtResource("1_field")
+DitherBrush = ExtResource("5_dither")
+
+[node name="Background" type="Node2D" parent="." unique_id=1050046696]
+z_index = -2
+script = ExtResource("4_u2ujh")
+
+[node name="Seed" parent="." unique_id=135183726 node_paths=PackedStringArray("creep_field") instance=ExtResource("2_go1b2")]
+unique_name_in_owner = true
+position = Vector2(2880, 1620)
+creep_field = NodePath("../CreepField")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=278345394]
+position = Vector2(2920, 1561)
+
+[node name="EntitiesRoot" type="Node2D" parent="." unique_id=202492008]
+unique_name_in_owner = true
+
+[node name="Bob" parent="EntitiesRoot" unique_id=1883938986 instance=ExtResource("3_40mgu")]
+position = Vector2(2734, 1421)
+
+[node name="Bob2" parent="EntitiesRoot" unique_id=1395363841 instance=ExtResource("3_40mgu")]
+position = Vector2(2660, 1693)
+
+[node name="Bob3" parent="EntitiesRoot" unique_id=1210584057 instance=ExtResource("3_40mgu")]
+position = Vector2(3128, 1403)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2010326299]
+
+[node name="UI" type="Control" parent="CanvasLayer" unique_id=1598005325]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI" unique_id=1110378739]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score" type="Label" parent="CanvasLayer/UI/VBoxContainer" unique_id=246699514]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Souls Eaten: 0"

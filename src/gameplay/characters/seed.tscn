@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cqafoon7yf5vm"]
+
+[ext_resource type="SpriteFrames" uid="uid://dpqp05rpny2hd" path="res://assets/art/characters/player/seed.aseprite" id="1_0w45c"]
+[ext_resource type="Script" uid="uid://b2cdoy4oq2k0x" path="res://src/gameplay/characters/seed.gd" id="1_8emmv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph7b3"]
+size = Vector2(60, 64)
+
+[node name="Seed" type="Node2D" unique_id=135183726]
+script = ExtResource("1_8emmv")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=955303786]
+unique_name_in_owner = true
+position = Vector2(2, 0)
+sprite_frames = ExtResource("1_0w45c")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1315639425]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1700068278]
+shape = SubResource("RectangleShape2D_ph7b3")
+
+[node name="CreepOrigin" type="Marker2D" parent="." unique_id=419632190]
+unique_name_in_owner = true
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

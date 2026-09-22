@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://clgs5k4honibm"
+path="res://.godot/imported/golden_screen.aseprite-6a16604d980b062e200343d6f8226b53.res"
+
+[deps]
+
+source_file="res://assets/art/world/golden_screen.aseprite"
+dest_files=["res://.godot/imported/golden_screen.aseprite-6a16604d980b062e200343d6f8226b53.res"]
+
+[params]
+
