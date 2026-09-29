@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture-split-layer"
+type="PortableCompressedTexture2D"
+uid="uid://wa0jggqx5pgk"
+path="res://.godot/imported/spritesheets_side walls, windows, fences.ase_layer_tex-476e0a76dd23b35672cf92a9ee4ee1a8.res"
+
+[deps]
+
+source_file="res://assets/art/spritesheets_side walls, windows, fences.ase_layer_tex"
+dest_files=["res://.godot/imported/spritesheets_side walls, windows, fences.ase_layer_tex-476e0a76dd23b35672cf92a9ee4ee1a8.res"]
+
+[params]
+

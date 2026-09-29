@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture-split-layer"
+type="PortableCompressedTexture2D"
+uid="uid://nkyf5tkjjb5"
+path="res://.godot/imported/spritesheets_top down walls.ase_layer_tex-da76c0f3dea1181c0c4fb6d143261e66.res"
+
+[deps]
+
+source_file="res://assets/art/spritesheets_top down walls.ase_layer_tex"
+dest_files=["res://.godot/imported/spritesheets_top down walls.ase_layer_tex-da76c0f3dea1181c0c4fb6d143261e66.res"]
+
+[params]
+

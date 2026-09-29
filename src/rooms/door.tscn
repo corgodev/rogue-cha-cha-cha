@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://crwevi56ks0vd"]
+
+[ext_resource type="Script" uid="uid://dec4m1tbaoguv" path="res://src/rooms/door.gd" id="1_26r6h"]
+[ext_resource type="Texture2D" uid="uid://bk0eo8bklpy2g" path="res://assets/art/spritesheets_doors and entrances.ase_layer_tex" id="2_r8tbt"]
+
+[node name="Door" type="Node2D" unique_id=422541066]
+script = ExtResource("1_26r6h")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=341430842]
+unique_name_in_owner = true
+texture = ExtResource("2_r8tbt")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)

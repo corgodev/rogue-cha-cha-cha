@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://tlf3ghmj4418"]
+
+[ext_resource type="Script" uid="uid://mvupn4vx5p7e" path="res://src/gameplay/enemies/enemy.gd" id="1_wp141"]
+[ext_resource type="Resource" uid="uid://dvenrucuv4idt" path="res://resources/patrols/square.tres" id="2_wp141"]
+[ext_resource type="Texture2D" uid="uid://8ln4uwluvnu8" path="res://assets/art/spritesheets_postaci.ase_layer_tex" id="3_2djbf"]
+
+[node name="Bat" type="Node2D" unique_id=1651079001]
+script = ExtResource("1_wp141")
+patrol = ExtResource("2_wp141")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=795733324]
+texture = ExtResource("3_2djbf")
+region_enabled = true
+region_rect = Rect2(112, 80, 16, 16)

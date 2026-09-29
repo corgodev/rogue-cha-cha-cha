@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture-split-layer"
+type="PortableCompressedTexture2D"
+uid="uid://cppys33dr0yts"
+path="res://.godot/imported/spritesheets_dirt and grass.ase_layer_tex-29173edd236efa2e8dc7552586f2a04d.res"
+
+[deps]
+
+source_file="res://assets/art/spritesheets_dirt and grass.ase_layer_tex"
+dest_files=["res://.godot/imported/spritesheets_dirt and grass.ase_layer_tex-29173edd236efa2e8dc7552586f2a04d.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture-split-layer"
+type="PortableCompressedTexture2D"
+uid="uid://xn2il7ddhwr"
+path="res://.godot/imported/spritesheets_Mockup.ase_layer_tex-ad5865b7d020e776c396185119d25f8f.res"
+
+[deps]
+
+source_file="res://assets/art/spritesheets_Mockup.ase_layer_tex"
+dest_files=["res://.godot/imported/spritesheets_Mockup.ase_layer_tex-ad5865b7d020e776c396185119d25f8f.res"]
+
+[params]
+

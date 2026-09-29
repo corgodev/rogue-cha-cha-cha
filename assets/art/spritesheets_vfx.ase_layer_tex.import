@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture-split-layer"
+type="PortableCompressedTexture2D"
+uid="uid://xv6ldf883g74"
+path="res://.godot/imported/spritesheets_vfx.ase_layer_tex-d3945b6296f67be4509105c8fcdb9203.res"
+
+[deps]
+
+source_file="res://assets/art/spritesheets_vfx.ase_layer_tex"
+dest_files=["res://.godot/imported/spritesheets_vfx.ase_layer_tex-d3945b6296f67be4509105c8fcdb9203.res"]
+
+[params]
+

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dve18bd3f4x08"]
+
+[ext_resource type="Script" uid="uid://dcubbn0f0pmdm" path="res://src/gameplay/controllers/player_controller.gd" id="1_i2etr"]
+
+[node name="PlayerController" type="Node" unique_id=912232787]
+script = ExtResource("1_i2etr")

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PatrolDefinition" format=3 uid="uid://dyg48broq3h2b"]
+
+[ext_resource type="Script" uid="uid://dco4xr41hoe1j" path="res://src/gameplay/enemies/patrol_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+cells_per_leg = 1

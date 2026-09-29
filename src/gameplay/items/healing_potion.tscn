@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cvow2j4ojygxo"]
+
+[ext_resource type="Texture2D" uid="uid://bwu2uirxhbsic" path="res://assets/art/spritesheets_random items.ase_layer_tex" id="1_ot87d"]
+[ext_resource type="Script" uid="uid://du8lf3yrkmntu" path="res://src/gameplay/items/pickup.gd" id="1_pms4b"]
+
+[node name="HealingPotion" type="Node2D" unique_id=149173807]
+script = ExtResource("1_pms4b")
+occupancy = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1104836462]
+texture = ExtResource("1_ot87d")
+region_enabled = true
+region_rect = Rect2(16, 64, 16, 16)

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dv2fihn30megx"]
+
+[ext_resource type="Script" uid="uid://bh7dt1ykobk6y" path="res://src/gameplay/main_game.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://uaeahxhspg5p" path="res://src/rooms/playground.tscn" id="2"]
+[ext_resource type="Script" uid="uid://dcubbn0f0pmdm" path="res://src/gameplay/controllers/player_controller.gd" id="3"]
+[ext_resource type="Script" uid="uid://bmhoqmnomhs0h" path="res://src/gameplay/player_party.gd" id="4"]
+[ext_resource type="Script" uid="uid://pnmu025338rg" path="res://src/gameplay/turn_controller.gd" id="5"]
+
+[node name="MainGame" type="Node2D" unique_id=752194826 node_paths=PackedStringArray("CURRENT_ROOM")]
+script = ExtResource("1")
+CURRENT_ROOM = NodePath("Playground")
+
+[node name="Playground" parent="." unique_id=635528203 instance=ExtResource("2")]
+
+[node name="GameTickTimer" type="Timer" parent="." unique_id=155491231]
+
+[node name="PlayerController" type="Node" parent="." unique_id=465848592]
+script = ExtResource("3")
+
+[node name="PlayerParty" type="Node" parent="." unique_id=1425605598]
+script = ExtResource("4")
+
+[node name="TurnController" type="Node" parent="." unique_id=1268379991]
+script = ExtResource("5")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=818416380]
+
+[node name="Status" type="Label" parent="HUD" unique_id=2140345375]
+offset_left = 4.0
+offset_right = 318.0
+offset_bottom = 16.0
+theme_override_font_sizes/font_size = 12
+text = "Loading room..."
+
+[node name="Detail" type="Label" parent="HUD" unique_id=1056379999]
+offset_left = 4.0
+offset_top = 15.0
+offset_right = 318.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 10
+
+[node name="Controls" type="Label" parent="HUD" unique_id=106915356]
+offset_left = 4.0
+offset_top = 208.0
+offset_right = 318.0
+offset_bottom = 224.0
+theme_override_font_sizes/font_size = 10
+text = "Arrows: turn   R: restart   Bump enemies to attack"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=616970979]
+position = Vector2(159, 88)

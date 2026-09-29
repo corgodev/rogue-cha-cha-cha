@@ -1,0 +1,84 @@
+[gd_resource type="TileSet" format=3 uid="uid://ns2om67gn6xo"]
+
+[ext_resource type="Texture2D" uid="uid://cppys33dr0yts" path="res://assets/art/spritesheets_dirt and grass.ase_layer_tex" id="1_81yw3"]
+[ext_resource type="Texture2D" uid="uid://nkyf5tkjjb5" path="res://assets/art/spritesheets_top down walls.ase_layer_tex" id="2_vgpmu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1le5j"]
+resource_name = "ground"
+texture = ExtResource("1_81yw3")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/probability = 0.05
+2:0/0 = 0
+2:0/0/probability = 0.05
+3:0/0 = 0
+3:0/0/probability = 0.05
+4:0/0 = 0
+4:0/0/probability = 0.05
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vq0c3"]
+resource_name = "walls"
+texture = ExtResource("2_vgpmu")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+6:0/0 = 0
+
+[resource]
+sources/1 = SubResource("TileSetAtlasSource_1le5j")
+sources/3 = SubResource("TileSetAtlasSource_vq0c3")

@@ -1,6 +1,13 @@
 {
     "godotTools.editorPath.godot4": "e:\\gamedev\\Godot_v4.7.2-stable_mono_win64\\Godot_v4.7.2-stable_mono_win64\\godot.exe",
     "files.exclude": {
-        "**/*.uid": true
-    }
+        "**/*.uid": true,
+        "**/*.tscn": true,
+    },
+    "folder-color.pathColors": [
+        {
+            "filePath": "rogue-cha-cha-cha\\src\\gameplay\\combat\\attack_feedback.gd",
+            "color": "foldercolorizer.color_afff5f"
+        }
+    ]
 }
