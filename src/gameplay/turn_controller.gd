@@ -4,7 +4,7 @@ extends Node
 signal tick_finished
 signal defeated
 var grid: RoomGrid
-var party: PlayerParty
+var snake: Snake
 var input: PlayerController
 var enemies: Array[Enemy] = []
 var combat := CombatResolver.new()
@@ -12,9 +12,9 @@ var tick_count: int = 0
 var running: bool = false
 var last_action: String = "Ready"
 
-func initialize(room_grid: RoomGrid, player_party: PlayerParty, controller: PlayerController, room_enemies: Array[Enemy]) -> void:
+func initialize(room_grid: RoomGrid, player_snake: Snake, controller: PlayerController, room_enemies: Array[Enemy]) -> void:
     grid = room_grid
-    party = player_party
+    snake = player_snake
     input = controller
     enemies = room_enemies.duplicate()
     tick_count = 0
@@ -23,15 +23,15 @@ func initialize(room_grid: RoomGrid, player_party: PlayerParty, controller: Play
 func advance_tick() -> void:
     # Tick consists of:
     # 1. Applying movement direction (player presses key)
-    # 2. Resolving party (trying to move and attacking enemies if encountered or taking no-move damage)
+    # 2. Resolving snake (trying to move and attacking enemies if encountered or taking no-move damage)
     # 3. Checking if player was defeated.
-    # 4. Resolving enemies movement (checking if they can move in the direction they want to, dealing damange to party if member is encountered and moving)
+    # 4. Resolving enemies movement (checking if they can move in the direction they want to, dealing damange to snake if member is encountered and moving)
     # 5. Checking again if player was defeated (since enemy could have killed them)
     if not running:
         return
     tick_count += 1
-    party.apply_direction(input.consume_direction())
-    _resolve_party()
+    snake.apply_direction(input.consume_direction())
+    _resolve_snake()
     if _check_defeat():
         return
     for enemy in enemies:
@@ -42,26 +42,27 @@ func advance_tick() -> void:
             return
     tick_finished.emit()
 
-func _resolve_party() -> void:
-    var leader := party.members[0]
-    var destination := leader.grid_cell + party.facing
+func _resolve_snake() -> void:
+    var leader := snake.members[0]
+    var destination := leader.grid_cell + snake.facing
     # If there is enemy in destination - attack them
     if grid.is_walkable(destination) and grid.get_actor_at(destination) is Enemy:
-        combat.attack(leader, party.facing, grid)
+        combat.attack(leader, snake.facing, grid)
         last_action = "%s attacks" % leader.name
         return
-    # If party doesn't move (for any reason like wall, another actor in destination cell, or something else) - take damage
-    if not grid.try_move_batch(party.proposed_move()):
-        party.take_damage(party.collision_damage)
-        last_action = "Collision! -%d HP" % party.collision_damage
+    # If snake doesn't move (for any reason like wall, another actor in destination cell, or something else) - take damage
+    if not grid.try_move_batch(snake.proposed_move()):
+        snake.take_damage(snake.collision_damage)
+        last_action = "Collision! -%d HP" % snake.collision_damage
         return
+    snake.refresh_textures()
     last_action = "Moving"
     FmodServer.play_one_shot("event:/step")
-    # After movement - get any pickup at cells where party members are
-    for member in party.members:
+    # After movement - get any pickup at cells where snake members are
+    for member in snake.members:
         var pickup := grid.get_pickup_at(member.grid_cell) as Pickup
         if pickup != null:
-            pickup.apply_to(party)
+            pickup.apply_to(snake)
             grid.remove(pickup)
             pickup.queue_free()
             last_action = "Picked up healing"
@@ -75,12 +76,12 @@ func _resolve_enemy(enemy: Enemy) -> void:
             enemy.advance_leg()
             return
 
-        # If there is a party member in destination - hit them and advance patrol leg (so basically enemy doesn't move but only deals damage)
+        # If there is a snake member in destination - hit them and advance patrol leg (so basically enemy doesn't move but only deals damage)
         var occupant := grid.get_actor_at(destination)
         if occupant != null:
-            if occupant is Character and party.members.has(occupant):
-                party.take_damage(enemy.contact_damage)
-                last_action = "%s hits party" % enemy.name
+            if occupant is Character and snake.members.has(occupant):
+                snake.take_damage(enemy.contact_damage)
+                last_action = "%s hits snake" % enemy.name
             else:
                 enemy.advance_leg()
             return
@@ -89,7 +90,7 @@ func _resolve_enemy(enemy: Enemy) -> void:
             enemy.record_step()
 
 func _check_defeat() -> bool:
-    if party.health > 0:
+    if snake.health > 0:
         return false
     running = false
     last_action = "Defeated! Press R to restart"

@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://ns2om67gn6xo" path="res://resources/tileset.tres" id="1_hjq7c"]
 [ext_resource type="PackedScene" uid="uid://dve18bd3f4x08" path="res://src/gameplay/controllers/player_controller.tscn" id="2_7a7t2"]
-[ext_resource type="PackedScene" uid="uid://db0j8tdlbcn0h" path="res://src/gameplay/characters/mage.tscn" id="3_jasf5"]
+[ext_resource type="PackedScene" uid="uid://db0j8tdlbcn0h" path="res://src/gameplay/characters/character.tscn" id="3_jasf5"]
 [ext_resource type="Script" uid="uid://kp23jyw8sdxo" path="res://src/gameplay/room_grid.gd" id="4_sniry"]
 [ext_resource type="PackedScene" uid="uid://crwevi56ks0vd" path="res://src/rooms/door.tscn" id="5_kxekw"]
 

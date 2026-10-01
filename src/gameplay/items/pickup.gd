@@ -7,5 +7,5 @@ func _init() -> void:
     occupancy = Occupancy.PICKUP
 
 # TODO: We should have different types of pickups probably.
-func apply_to(party: PlayerParty) -> void:
-    party.heal(healing)
+func apply_to(snake: Snake) -> void:
+    snake.heal(healing)

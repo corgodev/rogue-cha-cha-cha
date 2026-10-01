@@ -5,7 +5,7 @@ extends Node2D
 @export_range(0.1, 10.0) var GAME_TICK_FREQUENCY: float = 1.0
 @export var CURRENT_ROOM: Room
 @onready var timer: Timer = $GameTickTimer
-@onready var party: PlayerParty = $PlayerParty
+@onready var snake: Snake = $Snake
 @onready var controller: PlayerController = $PlayerController
 @onready var turns: TurnController = $TurnController
 @onready var status: Label = $HUD/Status
@@ -20,11 +20,11 @@ func _ready() -> void:
     if not CURRENT_ROOM.initialization_ok:
         status.text = "Room setup failed; check debugger."
         return
-    if not party.initialize(CURRENT_ROOM.starting_party, CURRENT_ROOM.grid):
-        status.text = "Party setup failed; check debugger."
-        push_error("Starting party needs distinct, adjacent, registered characters with attacks.")
+    if not snake.initialize(CURRENT_ROOM.starting_snake, CURRENT_ROOM.grid):
+        status.text = "snake setup failed; check debugger."
+        push_error("Starting snake needs distinct, adjacent, registered characters with attacks.")
         return
-    turns.initialize(CURRENT_ROOM.grid, party, controller, CURRENT_ROOM.enemies)
+    turns.initialize(CURRENT_ROOM.grid, snake, controller, CURRENT_ROOM.enemies)
     var feedback := CURRENT_ROOM.get_node_or_null("AttackFeedback")
     if feedback != null:
         turns.combat.attacked.connect(feedback.show_attack)
@@ -40,5 +40,5 @@ func _unhandled_key_input(event: InputEvent) -> void:
         get_tree().reload_current_scene()
 
 func _update_hud() -> void:
-    status.text = "HP %d/%d   Tick %d   %s" % [party.health, party.max_health, turns.tick_count, party.members[0].name]
+    status.text = "HP %d/%d   Tick %d   %s" % [snake.health, snake.max_health, turns.tick_count, snake.members[0].name]
     detail.text = turns.last_action

@@ -1,12 +1,11 @@
 [gd_resource type="Resource" script_class="EnemyDefinition" format=3 uid="uid://b0wt62cqgxhv2"]
 
-[ext_resource type="Resource" uid="uid://dvenrucuv4idt" path="res://resources/patrols/square.tres" id="1_rr1ww"]
+[ext_resource type="Resource" uid="uid://dyg48broq3h2b" path="res://resources/patrols/line.tres" id="1_rr1ww"]
 [ext_resource type="Script" uid="uid://bum04u3mnuvht" path="res://src/gameplay/enemies/enemy_definition.gd" id="2_my6kx"]
 [ext_resource type="Texture2D" uid="uid://8ln4uwluvnu8" path="res://assets/art/spritesheets_postaci.ase_layer_tex" id="3_uvssf"]
 
 [resource]
 script = ExtResource("2_my6kx")
-steps_per_tick = 3
 texture = ExtResource("3_uvssf")
 sprite_region = Rect2(112, 80, 16, 16)
 default_patrol = ExtResource("1_rr1ww")

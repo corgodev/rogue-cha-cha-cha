@@ -1,7 +1,7 @@
 class_name Room
 extends Node2D
 
-@export var starting_party: Array[Character] = []
+@export var starting_snake: Array[Character] = []
 @onready var grid: RoomGrid = %RoomGrid
 @onready var _grid_entities: Node2D = %GridEntities
 var enemies: Array[Enemy] = []

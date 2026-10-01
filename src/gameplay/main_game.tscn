@@ -3,11 +3,41 @@
 [ext_resource type="Script" uid="uid://bh7dt1ykobk6y" path="res://src/gameplay/main_game.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://uaeahxhspg5p" path="res://src/rooms/playground.tscn" id="2"]
 [ext_resource type="Script" uid="uid://dcubbn0f0pmdm" path="res://src/gameplay/controllers/player_controller.gd" id="3"]
-[ext_resource type="Script" uid="uid://bmhoqmnomhs0h" path="res://src/gameplay/player_party.gd" id="4"]
+[ext_resource type="Script" uid="uid://dd8tkngbv7ssb" path="res://src/gameplay/snake.gd" id="4_0dvni"]
 [ext_resource type="Script" uid="uid://pnmu025338rg" path="res://src/gameplay/turn_controller.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://bajgp7ba0ga84" path="res://assets/art/spritesheets_snake.ase_layer_tex" id="6_glor6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glor6"]
+atlas = ExtResource("6_glor6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp7an"]
+atlas = ExtResource("6_glor6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2sfr"]
+atlas = ExtResource("6_glor6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egdul"]
+atlas = ExtResource("6_glor6")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fcp7"]
+atlas = ExtResource("6_glor6")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56rt5"]
+atlas = ExtResource("6_glor6")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dvni"]
+atlas = ExtResource("6_glor6")
+region = Rect2(48, 16, 16, 16)
 
 [node name="MainGame" type="Node2D" unique_id=752194826 node_paths=PackedStringArray("CURRENT_ROOM")]
 script = ExtResource("1")
+GAME_TICK_FREQUENCY = 3.0
 CURRENT_ROOM = NodePath("Playground")
 
 [node name="Playground" parent="." unique_id=635528203 instance=ExtResource("2")]
@@ -16,9 +46,6 @@ CURRENT_ROOM = NodePath("Playground")
 
 [node name="PlayerController" type="Node" parent="." unique_id=465848592]
 script = ExtResource("3")
-
-[node name="PlayerParty" type="Node" parent="." unique_id=1425605598]
-script = ExtResource("4")
 
 [node name="TurnController" type="Node" parent="." unique_id=1268379991]
 script = ExtResource("5")
@@ -54,3 +81,14 @@ position = Vector2(159, 88)
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=1350948153]
 bank_paths = ["res://assets/banks/Master.strings.bank", "res://assets/banks/Master.bank"]
+
+[node name="Snake" type="Node" parent="." unique_id=1772955186]
+script = ExtResource("4_0dvni")
+head = SubResource("AtlasTexture_glor6")
+straight = SubResource("AtlasTexture_lp7an")
+tail = SubResource("AtlasTexture_e2sfr")
+up_right = SubResource("AtlasTexture_egdul")
+down_right = SubResource("AtlasTexture_3fcp7")
+down_left = SubResource("AtlasTexture_56rt5")
+up_left = SubResource("AtlasTexture_0dvni")
+metadata/_custom_type_script = "uid://dd8tkngbv7ssb"

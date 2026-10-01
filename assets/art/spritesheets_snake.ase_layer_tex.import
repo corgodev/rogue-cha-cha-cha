@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture-split-layer"
+type="PortableCompressedTexture2D"
+uid="uid://bajgp7ba0ga84"
+path="res://.godot/imported/spritesheets_snake.ase_layer_tex-37daa6381878cfba5293ea3b75a93e1e.res"
+
+[deps]
+
+source_file="res://assets/art/spritesheets_snake.ase_layer_tex"
+dest_files=["res://.godot/imported/spritesheets_snake.ase_layer_tex-37daa6381878cfba5293ea3b75a93e1e.res"]
+
+[params]
+

@@ -6,8 +6,6 @@
 
 [resource]
 script = ExtResource("2_yriqn")
-max_health = 6
-contact_damage = 2
 texture = ExtResource("3_1wfg6")
 sprite_region = Rect2(96, 96, 16, 16)
 default_patrol = ExtResource("1_t2e0f")
