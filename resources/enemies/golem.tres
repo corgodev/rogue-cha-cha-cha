@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyDefinition" format=3 uid="uid://dtiqegxakd1i8"]
+
+[ext_resource type="Resource" uid="uid://dyg48broq3h2b" path="res://resources/patrols/line.tres" id="1_t2e0f"]
+[ext_resource type="Script" uid="uid://bum04u3mnuvht" path="res://src/gameplay/enemies/enemy_definition.gd" id="2_yriqn"]
+[ext_resource type="Texture2D" uid="uid://8ln4uwluvnu8" path="res://assets/art/spritesheets_postaci.ase_layer_tex" id="3_1wfg6"]
+
+[resource]
+script = ExtResource("2_yriqn")
+max_health = 6
+contact_damage = 2
+texture = ExtResource("3_1wfg6")
+sprite_region = Rect2(96, 96, 16, 16)
+default_patrol = ExtResource("1_t2e0f")

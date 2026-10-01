@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://duxcpak0vgpgo"]
+
+[ext_resource type="Script" uid="uid://mvupn4vx5p7e" path="res://src/gameplay/enemies/enemy.gd" id="1_leloy"]
+[ext_resource type="Texture2D" uid="uid://8ln4uwluvnu8" path="res://assets/art/spritesheets_postaci.ase_layer_tex" id="2_crawj"]
+[ext_resource type="Resource" uid="uid://dtiqegxakd1i8" path="res://resources/enemies/golem.tres" id="2_owuuc"]
+
+[node name="Enemy" type="Node2D" unique_id=1651079001]
+script = ExtResource("1_leloy")
+definition = ExtResource("2_owuuc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=795733324]
+unique_name_in_owner = true
+texture = ExtResource("2_crawj")
+region_enabled = true
+region_rect = Rect2(112, 80, 16, 16)

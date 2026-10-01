@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://uaeahxhspg5p"]
 
 [ext_resource type="TileSet" uid="uid://ns2om67gn6xo" path="res://resources/tileset.tres" id="2_vxd5k"]
-[ext_resource type="PackedScene" uid="uid://dkygrle6f86n2" path="res://src/gameplay/enemies/golem.tscn" id="4_13eia"]
-[ext_resource type="Resource" uid="uid://dyg48broq3h2b" path="res://resources/patrols/line.tres" id="5_13eia"]
+[ext_resource type="Resource" uid="uid://b0wt62cqgxhv2" path="res://resources/enemies/fairy.tres" id="5_13eia"]
+[ext_resource type="PackedScene" uid="uid://duxcpak0vgpgo" path="res://src/gameplay/enemies/enemy.tscn" id="7_lexih"]
 [ext_resource type="PackedScene" uid="uid://db0j8tdlbcn0h" path="res://src/gameplay/characters/mage.tscn" id="character"]
 [ext_resource type="Script" uid="uid://l5518eg52prf" path="res://src/gameplay/combat/attack_feedback.gd" id="feedback"]
 [ext_resource type="Script" uid="uid://kp23jyw8sdxo" path="res://src/gameplay/room_grid.gd" id="grid"]
@@ -30,9 +30,12 @@ ground = NodePath("../Ground")
 [node name="GridEntities" type="Node2D" parent="." unique_id=525790823]
 unique_name_in_owner = true
 
-[node name="Golem" parent="GridEntities" unique_id=1651079001 instance=ExtResource("4_13eia")]
-position = Vector2(152, 88)
-patrol = ExtResource("5_13eia")
+[node name="Golem" parent="GridEntities" unique_id=1651079001 instance=ExtResource("7_lexih")]
+position = Vector2(136, 88)
+
+[node name="Fairy" parent="GridEntities" unique_id=596355380 instance=ExtResource("7_lexih")]
+position = Vector2(264, 80)
+definition = ExtResource("5_13eia")
 
 [node name="Warrior" parent="GridEntities" unique_id=641651193 instance=ExtResource("character")]
 modulate = Color(1, 0.8, 0.45, 1)
