@@ -45,18 +45,22 @@ func advance_tick() -> void:
 func _resolve_snake() -> void:
     var leader := snake.members[0]
     var destination := leader.grid_cell + snake.facing
+    var occupant := grid.get_actor_at(destination)
     # If there is enemy in destination - attack them
-    if grid.is_walkable(destination) and grid.get_actor_at(destination) is Enemy:
+    if grid.is_walkable(destination) and occupant is Enemy:
         combat.attack(leader, snake.facing, grid)
         last_action = "%s attacks" % leader.name
         return
-    # If snake doesn't move (for any reason like wall, another actor in destination cell, or something else) - take damage
-    if not grid.try_move_batch(snake.proposed_move()):
+    if occupant is Character and snake.try_recruit(occupant, grid):
+        last_action = "%s joins the snake" % occupant.name
+    # Existing members cannot be recruited again; normal collision rules apply.
+    elif not grid.try_move_batch(snake.proposed_move()):
         snake.take_damage(snake.collision_damage)
         last_action = "Collision! -%d HP" % snake.collision_damage
         return
-    snake.refresh_textures()
-    last_action = "Moving"
+    else:
+        snake.refresh_textures()
+        last_action = "Moving"
     FmodServer.play_one_shot("event:/step")
     # After movement - get any pickup at cells where snake members are
     for member in snake.members:

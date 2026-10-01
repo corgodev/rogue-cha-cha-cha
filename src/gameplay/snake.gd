@@ -65,10 +65,12 @@ func refresh_textures() -> void:
     for index in members.size():
         var member := members[index]
         if index == 0:
+            member.face_direction(facing)
             # The source head faces up; a single-member snake is also a head.
             member.set_section_texture(head, Vector2.UP.angle_to(Vector2(facing)))
             continue
         var toward_head := members[index - 1].grid_cell - member.grid_cell
+        member.face_direction(toward_head)
         if index == members.size() - 1:
             # The source tail connects upward to the preceding section.
             member.set_section_texture(tail, Vector2.UP.angle_to(Vector2(toward_head)))
@@ -99,6 +101,18 @@ func proposed_move() -> Dictionary[GridPlaceable, Vector2i]:
         var follower: GridPlaceable = members[index]
         destinations[follower] = members[index - 1].grid_cell
     return destinations
+
+# Recruiting extends the front into the encountered character's existing cell.
+# Existing members stay in place for this tick, preserving chain adjacency.
+func try_recruit(character: Character, grid: RoomGrid) -> bool:
+    if members.is_empty() or not is_character_valid(character, members, grid, 0):
+        return false
+    if character.grid_cell != members[0].grid_cell + facing or not grid.is_walkable(character.grid_cell):
+        return false
+    members.push_back(character)
+    refresh_textures()
+    return true
+
 
 func take_damage(amount: int) -> void:
     health = maxi(0, health - amount)

@@ -74,9 +74,6 @@ offset_bottom = 224.0
 theme_override_font_sizes/font_size = 10
 text = "Arrows: turn   R: restart   Bump enemies to attack"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=616970979]
-position = Vector2(159, 88)
-
 [node name="FmodListener2D" type="FmodListener2D" parent="." unique_id=1820195759]
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=1350948153]

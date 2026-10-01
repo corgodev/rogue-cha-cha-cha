@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterDefinition" format=3 uid="uid://btpfvncpm2vi2"]
+
+[ext_resource type="Script" uid="uid://livcmkcrwvdu" path="res://src/gameplay/characters/character_definition.gd" id="1_fthiu"]
+[ext_resource type="Texture2D" uid="uid://8ln4uwluvnu8" path="res://assets/art/spritesheets_postaci.ase_layer_tex" id="2_1l3ae"]
+
+[resource]
+script = ExtResource("1_fthiu")
+texture = ExtResource("2_1l3ae")
+sprite_region = Rect2(0, 0, 16, 16)
+metadata/_custom_type_script = "uid://livcmkcrwvdu"

@@ -2,22 +2,19 @@
 
 [ext_resource type="Script" uid="uid://b0o3i15pp870p" path="res://src/gameplay/characters/character.gd" id="1_u0ecy"]
 [ext_resource type="Resource" path="res://resources/attacks/mage.tres" id="2_jk5oj"]
-[ext_resource type="Script" uid="uid://livcmkcrwvdu" path="res://src/gameplay/characters/character_definition.gd" id="2_y1nad"]
+[ext_resource type="Resource" uid="uid://c8nmvpyvah2yo" path="res://resources/characters/mage.tres" id="2_y1nad"]
 [ext_resource type="Texture2D" uid="uid://8ln4uwluvnu8" path="res://assets/art/spritesheets_postaci.ase_layer_tex" id="3_y1nad"]
-
-[sub_resource type="Resource" id="Resource_u0ecy"]
-script = ExtResource("2_y1nad")
-texture = ExtResource("3_y1nad")
-sprite_region = Rect2(0, 0, 16, 16)
-metadata/_custom_type_script = "uid://livcmkcrwvdu"
 
 [node name="Character" type="Node2D" unique_id=1055288047]
 script = ExtResource("1_u0ecy")
-definition = SubResource("Resource_u0ecy")
+definition = ExtResource("2_y1nad")
 attack = ExtResource("2_jk5oj")
+
+[node name="SectionSprite" type="Sprite2D" parent="." unique_id=787561926]
+unique_name_in_owner = true
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=710496814]
 unique_name_in_owner = true
 texture = ExtResource("3_y1nad")
 region_enabled = true
-region_rect = Rect2(16, 0, 16, 16)
+region_rect = Rect2(0, 0, 16, 16)
