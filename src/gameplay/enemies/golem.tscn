@@ -1,13 +1,10 @@
 [gd_scene format=3 uid="uid://dkygrle6f86n2"]
 
 [ext_resource type="Script" uid="uid://mvupn4vx5p7e" path="res://src/gameplay/enemies/enemy.gd" id="1_5gx3p"]
-[ext_resource type="Resource" uid="uid://dyg48broq3h2b" path="res://resources/patrols/line.tres" id="2_nj60a"]
 [ext_resource type="Texture2D" uid="uid://8ln4uwluvnu8" path="res://assets/art/spritesheets_postaci.ase_layer_tex" id="3_o3lxb"]
 
 [node name="Golem" type="Node2D" unique_id=1651079001]
 script = ExtResource("1_5gx3p")
-max_health = 10
-patrol = ExtResource("2_nj60a")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=795733324]
 texture = ExtResource("3_o3lxb")

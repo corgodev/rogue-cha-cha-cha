@@ -8,7 +8,6 @@ var enemies: Array[Enemy] = []
 var initialization_ok: bool = true
 
 func _ready() -> void:
-
     # This snaps entities that are placed on grid to their correct position.
     grid.entity_placed.connect(_snap_entity)
     grid.entity_moved.connect(_on_entity_moved)

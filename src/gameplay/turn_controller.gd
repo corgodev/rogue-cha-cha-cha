@@ -56,6 +56,7 @@ func _resolve_party() -> void:
         last_action = "Collision! -%d HP" % party.collision_damage
         return
     last_action = "Moving"
+    FmodServer.play_one_shot("event:/step")
     # After movement - get any pickup at cells where party members are
     for member in party.members:
         var pickup := grid.get_pickup_at(member.grid_cell) as Pickup
