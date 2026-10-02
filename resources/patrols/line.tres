@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1")
-cells_per_leg = 1
+distance_per_leg = 16.0

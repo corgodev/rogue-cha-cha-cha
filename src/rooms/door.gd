@@ -1,6 +1,6 @@
 @tool
 class_name Doors
-extends GridPlaceable
+extends WorldEntity
 
 signal door_entered(room_to_enter: Room)
 
@@ -22,7 +22,7 @@ func _ready() -> void:
     _update_visuals()
 
 func player_enter() -> void:
-    if exit_door:
+    if open and exit_door:
         door_entered.emit(next_room)
 
 func _update_visuals() -> void:

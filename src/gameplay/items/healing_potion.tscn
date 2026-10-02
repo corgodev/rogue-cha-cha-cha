@@ -5,7 +5,6 @@
 
 [node name="HealingPotion" type="Node2D" unique_id=149173807]
 script = ExtResource("1_pms4b")
-occupancy = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1104836462]
 texture = ExtResource("1_ot87d")

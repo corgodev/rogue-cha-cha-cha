@@ -4,3 +4,5 @@
 script = ExtResource("1")
 shape = 2
 damage = 1
+reach = 48.0
+width = 8.0

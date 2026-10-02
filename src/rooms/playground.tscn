@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://kp23jyw8sdxo" path="res://src/gameplay/room_grid.gd" id="grid"]
 [ext_resource type="Script" uid="uid://4hoynu4v72i4" path="res://src/rooms/room.gd" id="room"]
 [ext_resource type="Resource" path="res://resources/attacks/warrior.tres" id="warrior"]
+[ext_resource type="Resource" path="res://resources/attacks/mage.tres" id="mage_attack"]
+[ext_resource type="Resource" path="res://resources/attacks/archer.tres" id="rogue_attack"]
 
 [sub_resource type="Resource" id="Resource_qhayj"]
 script = ExtResource("13_gpe68")
@@ -55,19 +57,18 @@ attack = ExtResource("warrior")
 modulate = Color(1, 0.8, 0.45, 1)
 z_index = 2
 position = Vector2(184, 24)
-attack = ExtResource("warrior")
+attack = ExtResource("mage_attack")
 
 [node name="Rogue" parent="GridEntities" unique_id=718702898 instance=ExtResource("character")]
 modulate = Color(1, 0.8, 0.45, 1)
 z_index = 2
 position = Vector2(40, 152)
 definition = ExtResource("8_1vql1")
-attack = ExtResource("warrior")
+attack = ExtResource("rogue_attack")
 
-[node name="AttackFeedback" type="Node2D" parent="." unique_id=1031085012 node_paths=PackedStringArray("grid")]
+[node name="AttackFeedback" type="Node2D" parent="." unique_id=1031085012]
 z_index = 5
 script = ExtResource("feedback")
-grid = NodePath("../RoomGrid")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=350840175]
 top_level = true

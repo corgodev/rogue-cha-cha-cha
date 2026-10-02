@@ -1,36 +1,46 @@
 class_name CombatResolver
 extends RefCounted
 
-signal attacked(cells: Array[Vector2i], damage: int)
+signal attacked(origin: Vector2, direction: Vector2, area: Rect2, damage: int)
 
-func target_cells(origin: Vector2i, forward: Vector2i, attack: AttackDefinition, grid: RoomGrid) -> Array[Vector2i]:
-    var cells: Array[Vector2i] = []
-    match attack.shape:
-        AttackDefinition.Shape.ADJACENT:
-            if grid.is_walkable(origin + forward):
-                cells.append(origin + forward)
-        AttackDefinition.Shape.FRONT_ROW:
-            var side := Vector2i(-forward.y, forward.x)
-            for offset in range(-1, 2):
-                var cell := origin + forward + side * offset
-                if grid.is_walkable(cell):
-                    cells.append(cell)
-        AttackDefinition.Shape.FORWARD_RAY:
-            for distance in range(1, 4):
-                var cell := origin + forward * distance
-                if not grid.is_walkable(cell):
-                    break
-                cells.append(cell)
-    return cells
+func advance(delta: float, snake: Snake, room: Room) -> void:
+    for member in snake.members:
+        member.attack_remaining = maxf(0.0, member.attack_remaining - delta)
+        if member.attack_remaining > 0.00001:
+            continue
+        var target := nearest_target(member, room)
+        if target == null:
+            continue
+        var direction := member.global_position.direction_to(target.global_position)
+        if direction.is_zero_approx():
+            direction = snake.facing
+        member.face_direction(direction)
+        attack(member, direction, room)
+        member.attack_remaining = member.attack.cooldown
 
-func attack(leader: Character, forward: Vector2i, grid: RoomGrid) -> void:
-    var cells := target_cells(leader.grid_cell, forward, leader.attack, grid)
-    for cell in cells:
-        var enemy := grid.get_actor_at(cell) as Enemy
-        if enemy != null:
-            enemy.health = maxi(0, enemy.health - leader.attack.damage)
-            enemy.queue_redraw()
-            if enemy.health == 0:
-                grid.remove(enemy)
-                enemy.queue_free()
-    attacked.emit(cells, leader.attack.damage)
+func nearest_target(member: Character, room: Room) -> Enemy:
+    var nearest: Enemy
+    var nearest_distance := INF
+    for enemy in room.enemies:
+        if not is_instance_valid(enemy) or not enemy.is_active():
+            continue
+        var distance := member.global_position.distance_to(enemy.global_position)
+        if distance > member.attack.reach + enemy.collision_radius or distance >= nearest_distance:
+            continue
+        if room.has_line_of_sight(member.global_position, enemy.global_position):
+            nearest = enemy
+            nearest_distance = distance
+    return nearest
+
+func attack(member: Character, direction: Vector2, room: Room) -> void:
+    var area := member.attack.local_area()
+    for enemy in room.enemies:
+        if not is_instance_valid(enemy) or not enemy.is_active():
+            continue
+        var offset := (enemy.global_position - member.global_position).rotated(-direction.angle())
+        var closest := offset.clamp(area.position, area.end)
+        if offset.distance_squared_to(closest) > enemy.collision_radius * enemy.collision_radius:
+            continue
+        if room.has_line_of_sight(member.global_position, enemy.global_position):
+            enemy.take_damage(member.attack.damage)
+    attacked.emit(member.global_position, direction, area, member.attack.damage)

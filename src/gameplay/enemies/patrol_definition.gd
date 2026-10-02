@@ -1,16 +1,13 @@
 class_name PatrolDefinition
 extends Resource
 
-@export var directions: Array[Vector2i] = [Vector2i.RIGHT, Vector2i.LEFT]
-@export_range(1, 30) var cells_per_leg: int = 3
+@export var directions: Array[Vector2] = [Vector2.RIGHT, Vector2.LEFT]
+@export_range(1.0, 1024.0) var distance_per_leg: float = 48.0
 
-
-# Snake.is_cardinal(direction) checks that each patrol direction is one of the four grid directions: up, down, left, or right.
-# TODO: We should add different type of movements (flying, jumping) and also allow cardinal movement.
 func is_valid() -> bool:
-    if directions.is_empty() or cells_per_leg < 1:
+    if directions.is_empty() or distance_per_leg <= 0.0:
         return false
     for direction in directions:
-        if not Snake.is_cardinal(direction):
+        if not direction.is_finite() or direction.is_zero_approx():
             return false
     return true
